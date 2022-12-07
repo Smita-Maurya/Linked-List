@@ -1,0 +1,37 @@
+ *deleteNode(Node *head, int pos)
+{
+    
+   
+    if(head==NULL) return head;
+    Node *temp = head;
+    if(pos==0){
+        head = temp->next;
+        delete temp;
+        return head;
+    }
+    
+    
+        
+        
+    for(int count=0; temp!=NULL&&count<pos-1;count++)
+         temp= temp->next;
+        //count++;
+    if(temp==NULL)return head; //if position is greater than linked list and suddenly temp becomes NULL
+    if(temp->next==NULL) return head;// condition for last node
+    if(temp->next->next==NULL)// condition for middle nodes
+    {
+        temp->next=NULL;
+        return head;
+    }
+    
+    
+    
+    
+    Node* a = temp->next->next;
+     delete temp->next;
+    temp->next =a;
+     
+    return head;
+    
+     
+}
