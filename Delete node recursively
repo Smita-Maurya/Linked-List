@@ -1,0 +1,14 @@
+int length(Node *head) {
+    if(head==NULL){
+        return 0;
+    }
+    
+    if(head->next==NULL){
+        return 1;
+    }
+     
+    int smallans = length(head->next);
+    
+    return smallans+1;
+    
+}
