@@ -1,0 +1,15 @@
+Node *deleteNodeRec(Node *head, int pos) {
+	
+    if(head==NULL){
+        return head;
+    }
+    Node *temp=head;
+    if(pos==0){
+        head=temp->next;
+        delete temp;
+        return head;
+    }
+    Node *smallnode = deleteNodeRec(head->next , pos-1);
+    head->next = smallnode;
+    return head;
+}
