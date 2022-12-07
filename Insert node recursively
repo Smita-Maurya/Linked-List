@@ -1,0 +1,19 @@
+Node* insertNode(Node *head, int i, int data) {
+	
+    Node *newnode=new Node(data);
+    if(head==NULL){
+        return head;
+    }
+    
+    if(i==0){
+       //head=newnode;
+        newnode->next=head;
+        head = newnode;
+        return head;
+    }
+     Node *smallnode = insertNode(head->next, i-1,data);
+    head->next = smallnode;
+    
+    return head;
+      
+}
