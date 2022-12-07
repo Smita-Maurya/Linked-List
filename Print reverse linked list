@@ -1,0 +1,38 @@
+void printReverse(Node *head)
+{
+   if(head==NULL){
+        return ;
+    }
+    if(head->next==NULL){
+        return ;
+    }
+    //Node *temp=head;
+    // Node* smallnode = printReverse(head->next);
+    // head->next->next=head;
+    // head->next=NULL;
+    // cout<<smallnode<<endl;
+    Node *current=head;
+    Node *prev = NULL;
+    Node *next ;
+    while(current!=NULL){
+        next = current->next;
+        current->next = prev;
+         prev=current;
+        current=next;
+        // prev=current;
+        //cout<<prev;
+    }
+    // head = prev;
+    cout<<prev->data<<" ";
+    //return prev;
+    
+    
+     
+}
+
+
+
+
+
+
+ 
