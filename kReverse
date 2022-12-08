@@ -1,0 +1,41 @@
+Node *reverseLinkedListRec(Node *head)
+{
+	 
+	if(head==NULL || head->next==NULL){
+		return head;
+	}
+
+	Node *smallans=reverseLinkedListRec(head->next);
+	Node * temp=head;
+	while(temp->next!=NULL){
+		temp=temp->next;
+	}
+	temp->next=head;
+	head->next=NULL;
+	return smallans;
+    
+}
+Node *kReverse(Node *head, int k)
+{
+	if(k==0){
+		return head;
+	}
+	Node *prev = NULL;
+	Node *curr=head;
+	Node *nextptr;
+
+	int count =0;
+	while(curr!=NULL && count<k){
+		nextptr=curr->next;
+		curr->next=prev;
+		prev=curr;
+		curr=nextptr;
+		count++;
+	}
+
+	if(nextptr!=NULL){
+		head->next=kReverse(nextptr , k);
+	}
+	return prev;
+	 
+}
