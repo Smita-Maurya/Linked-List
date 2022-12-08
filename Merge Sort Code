@@ -1,0 +1,71 @@
+ Node* midPoint(Node *head)
+{
+    // Write your code here
+	Node * slow = head;
+    Node * fast = head->next;
+    
+    while(fast!=NULL && fast->next!=NULL)
+    {
+        slow = slow->next;
+        fast = fast->next;
+        fast = fast->next;
+        
+    }
+    
+    return slow;
+}
+
+Node *mergeTwoSortedLinkedLists(Node *head1, Node *head2)
+{
+    Node *p1 = head1;
+    Node *p2 = head2;
+    Node *dummynode = new Node(-1);
+    Node *p3 = dummynode;
+    
+    while(p1!=NULL && p2!=NULL){
+        if(p1->data< p2->data){
+            p3->next = p1;
+            p1= p1->next;
+            
+        }
+        else{
+            p3->next = p2;
+            p2=p2->next;
+            
+        }
+        p3=p3->next;
+    }
+    while(p1!=NULL){
+        p3->next=p1;
+        p1=p1->next;
+        p3=p3->next;
+    }
+    while(p2!=NULL){
+        p3->next=p2;
+        p2=p2->next;
+        p3=p3->next;
+    }
+    return dummynode->next;
+}
+
+
+
+Node *mergeSort(Node *head)
+{
+    if(head == NULL || head->next==NULL){
+        return head;
+    }
+    Node *middle = midPoint(head);
+    Node *head1 = head;
+    Node *head2 = middle->next;
+    middle->next=NULL;
+   
+    
+    head1 = mergeSort(head1);
+    head2 = mergeSort(head2);
+
+    Node * smallans = mergeTwoSortedLinkedLists(head1 , head2);
+    return smallans;
+    
+}
+	 
