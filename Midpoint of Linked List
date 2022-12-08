@@ -1,0 +1,33 @@
+Node *midPoint(Node *head)
+{
+    if(head==NULL){
+        return head;
+    }
+    int count =0;
+    Node *temp=head;
+    while(temp!=NULL){
+        temp=temp->next;
+        count++;
+    }
+    
+    Node *slow = head;
+    Node *fast = head->next;
+    if(count%2!=0){
+        while(fast!=NULL){
+            slow=slow->next;
+            fast = fast->next->next;
+        }
+        
+    }
+    if(count%2==0){
+        while(fast->next!=NULL){
+            slow = slow->next;
+            fast=fast->next->next;
+        }
+        
+    }
+     
+    return slow;
+    
+    
+    }
